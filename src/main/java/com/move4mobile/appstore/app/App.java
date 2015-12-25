@@ -1,13 +1,15 @@
 package com.move4mobile.appstore.app;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.move4mobile.appstore.Project;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by Wilco Wolters on 25/12/2015.
  */
+@Entity
 public class App {
 
     @Id
@@ -17,13 +19,18 @@ public class App {
     private String name;
 
     @OneToMany(mappedBy = "app")
-    private List<Build> builds;
+    private List<Version> versions;
+
+    @ManyToMany
+    @JsonIgnore
+    private Project project;
 
     App() {}
 
-    public App(String name, List<Build> builds) {
+    public App(String name, List<Version> versions, Project project) {
         this.name = name;
-        this.builds = builds;
+        this.versions = versions;
+        this.project = project;
     }
 
     public long getId() {
@@ -34,7 +41,11 @@ public class App {
         return name;
     }
 
-    public List<Build> getBuilds() {
-        return builds;
+    public List<Version> getVersions() {
+        return versions;
+    }
+
+    public Project getProject() {
+        return project;
     }
 }

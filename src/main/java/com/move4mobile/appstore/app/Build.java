@@ -1,7 +1,9 @@
 package com.move4mobile.appstore.app;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -9,6 +11,7 @@ import javax.persistence.ManyToOne;
 /**
  * Created by Wilco Wolters on 25/12/2015.
  */
+@Entity
 public class Build {
 
     @Id
@@ -16,6 +19,7 @@ public class Build {
     private Long id;
 
     @JsonIgnore
+    @JsonSerialize()
     @ManyToOne
     private Version version;
 

@@ -2,15 +2,13 @@ package com.move4mobile.appstore.app;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by Wilco Wolters on 25/12/2015.
  */
+@Entity
 public class Version {
 
     @Id
